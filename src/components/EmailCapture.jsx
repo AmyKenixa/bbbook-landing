@@ -45,188 +45,186 @@ const EmailCapture = ({
     }
   }, [type]);
 
- // Replace your handleSubmit function with this debug version
-
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  
-  if (!email || !email.includes('@')) {
-    setStatus('error');
-    setMessage('Please enter a valid email address');
-    return;
-  }
-
-  setStatus('loading');
-  
-  try {
-    // Check if environment variables exist
-    if (!process.env.REACT_APP_ACUMBAMAIL_API_TOKEN) {
-      console.error('Missing REACT_APP_ACUMBAMAIL_API_TOKEN');
-      setStatus('error');
-      setMessage('Configuration error: Missing API token');
-      return;
-    }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     
-    if (!process.env.REACT_APP_ACUMBAMAIL_LIST_ID) {
-      console.error('Missing REACT_APP_ACUMBAMAIL_LIST_ID');
+    if (!email || !email.includes('@')) {
       setStatus('error');
-      setMessage('Configuration error: Missing list ID');
+      setMessage('Please enter a valid email address');
       return;
     }
 
-    // Acumbamail API requires form-data format
-    const formData = new FormData();
-    formData.append('auth_token', process.env.REACT_APP_ACUMBAMAIL_API_TOKEN);
-    formData.append('list_id', process.env.REACT_APP_ACUMBAMAIL_LIST_ID);
-    formData.append('merge_fields[EMAIL]', email);
-    formData.append('merge_fields[SOURCE]', source || 'website');
-    formData.append('merge_fields[SIGNUP_DATE]', new Date().toISOString().split('T')[0]);
-    formData.append('merge_fields[TAGS]', 'barcelona-guide,early-access');
-    formData.append('response_type', 'json');
-
-    console.log('Sending to Acumbamail:', {
-      email,
-      source,
-      list_id: process.env.REACT_APP_ACUMBAMAIL_LIST_ID,
-      hasToken: !!process.env.REACT_APP_ACUMBAMAIL_API_TOKEN
-    });
-
-    const response = await fetch('https://acumbamail.com/api/1/addSubscriber/', {
-      method: 'POST',
-      body: formData
-    });
-
-    console.log('Response status:', response.status);
-    console.log('Response ok:', response.ok);
-    console.log('Response headers:', response.headers);
-
-    // Check if response is actually JSON
-    const contentType = response.headers.get('content-type');
-    console.log('Content-Type:', contentType);
-
-    let result;
+    setStatus('loading');
+    
     try {
-      result = await response.json();
-      console.log('Parsed JSON result:', result);
-    } catch (jsonError) {
-      console.error('Failed to parse JSON:', jsonError);
-      const textResponse = await response.text();
-      console.log('Raw response text:', textResponse);
-      
-      // If we can't parse JSON but response was ok, assume success
-      if (response.ok) {
-        setStatus('success');
-        setMessage('Perfect! We\'ll notify you when the book is available.');
-        setEmail('');
-        
-        if (typeof trackEmailSignup === 'function') {
-          trackEmailSignup(source, 'acumbamail');
-        }
-        
-        if (type === 'modal') {
-          localStorage.setItem('bohemia-email-modal-seen', 'true');
-          setTimeout(() => setShowModal(false), 3000);
-        }
+      // Check if environment variables exist
+      if (!process.env.REACT_APP_ACUMBAMAIL_API_TOKEN) {
+        console.error('Missing REACT_APP_ACUMBAMAIL_API_TOKEN');
+        setStatus('error');
+        setMessage('Configuration error: Missing API token');
         return;
-      } else {
-        throw new Error(`Server returned ${response.status}: ${textResponse}`);
       }
-    }
+      
+      if (!process.env.REACT_APP_ACUMBAMAIL_LIST_ID) {
+        console.error('Missing REACT_APP_ACUMBAMAIL_LIST_ID');
+        setStatus('error');
+        setMessage('Configuration error: Missing list ID');
+        return;
+      }
 
-    // Check for success - multiple possible indicators
-    if (result.status === 'success' || 
-        result.success === true || 
-        response.ok || 
-        result.code === 200 ||
-        (result.message && result.message.toLowerCase().includes('success'))) {
-      
-      setStatus('success');
-      setMessage('Perfect! We\'ll notify you when the book is available.');
-      setEmail('');
-      
-      // Track the signup
-      if (typeof trackEmailSignup === 'function') {
-        trackEmailSignup(source, 'acumbamail');
+      // Acumbamail API requires form-data format
+      const formData = new FormData();
+      formData.append('auth_token', process.env.REACT_APP_ACUMBAMAIL_API_TOKEN);
+      formData.append('list_id', process.env.REACT_APP_ACUMBAMAIL_LIST_ID);
+      formData.append('merge_fields[EMAIL]', email);
+      formData.append('merge_fields[SOURCE]', source || 'website');
+      formData.append('merge_fields[SIGNUP_DATE]', new Date().toISOString().split('T')[0]);
+      formData.append('merge_fields[TAGS]', 'barcelona-guide,early-access');
+      formData.append('response_type', 'json');
+
+      console.log('Sending to Acumbamail:', {
+        email,
+        source,
+        list_id: process.env.REACT_APP_ACUMBAMAIL_LIST_ID,
+        hasToken: !!process.env.REACT_APP_ACUMBAMAIL_API_TOKEN
+      });
+
+      const response = await fetch('https://acumbamail.com/api/1/addSubscriber/', {
+        method: 'POST',
+        body: formData
+      });
+
+      console.log('Response status:', response.status);
+      console.log('Response ok:', response.ok);
+      console.log('Response headers:', response.headers);
+
+      // Check if response is actually JSON
+      const contentType = response.headers.get('content-type');
+      console.log('Content-Type:', contentType);
+
+      let result;
+      try {
+        result = await response.json();
+        console.log('Parsed JSON result:', result);
+      } catch (jsonError) {
+        console.error('Failed to parse JSON:', jsonError);
+        const textResponse = await response.text();
+        console.log('Raw response text:', textResponse);
+        
+        // If we can't parse JSON but response was ok, assume success
+        if (response.ok) {
+          setStatus('success');
+          setMessage('Perfect! We\'ll notify you when the book is available.');
+          setEmail('');
+          
+          if (typeof trackEmailSignup === 'function') {
+            trackEmailSignup(source, 'acumbamail');
+          }
+          
+          if (type === 'modal') {
+            localStorage.setItem('bohemia-email-modal-seen', 'true');
+            setTimeout(() => setShowModal(false), 3000);
+          }
+          return;
+        } else {
+          throw new Error(`Server returned ${response.status}: ${textResponse}`);
+        }
       }
-      
-      // Mark modal as seen
-      if (type === 'modal') {
-        localStorage.setItem('bohemia-email-modal-seen', 'true');
-        setTimeout(() => setShowModal(false), 3000);
-      }
-      
-    } else if (result.error || result.message) {
-      // Handle specific errors
-      const errorMsg = (result.error || result.message || '').toLowerCase();
-      
-      if (errorMsg.includes('already exists') || 
-          errorMsg.includes('ya existe') ||
-          errorMsg.includes('duplicate') ||
-          errorMsg.includes('already subscribed') ||
-          errorMsg.includes('subscriber already exists')) {
-        setStatus('success');
-        setMessage('You\'re already on our list! We\'ll let you know when it\'s ready.');
-        setEmail('');
-      } else if (errorMsg.includes('invalid email') || 
-                 errorMsg.includes('email is not valid') ||
-                 errorMsg.includes('email format')) {
-        setStatus('error');
-        setMessage('Invalid email address. Please check and try again.');
-      } else if (errorMsg.includes('unauthorized') || 
-                 errorMsg.includes('auth') ||
-                 errorMsg.includes('token') ||
-                 errorMsg.includes('forbidden')) {
-        setStatus('error');
-        setMessage('Configuration error. Please contact support.');
-        console.error('API Auth Error:', result);
-      } else {
-        setStatus('error');
-        setMessage(`Subscription failed: ${result.error || result.message}`);
-        console.error('API Error:', result);
-      }
-    } else {
-      // No clear success or error indicators - log everything for debugging
-      console.warn('Unclear API response:', result);
-      
-      // If response was HTTP 200 but unclear result, assume success
-      if (response.status === 200) {
+
+      // Check for success - multiple possible indicators
+      if (result.status === 'success' || 
+          result.success === true || 
+          response.ok || 
+          result.code === 200 ||
+          (result.message && result.message.toLowerCase().includes('success'))) {
+        
         setStatus('success');
         setMessage('Perfect! We\'ll notify you when the book is available.');
         setEmail('');
         
+        // Track the signup
         if (typeof trackEmailSignup === 'function') {
           trackEmailSignup(source, 'acumbamail');
         }
         
+        // Mark modal as seen
         if (type === 'modal') {
           localStorage.setItem('bohemia-email-modal-seen', 'true');
           setTimeout(() => setShowModal(false), 3000);
         }
+        
+      } else if (result.error || result.message) {
+        // Handle specific errors
+        const errorMsg = (result.error || result.message || '').toLowerCase();
+        
+        if (errorMsg.includes('already exists') || 
+            errorMsg.includes('ya existe') ||
+            errorMsg.includes('duplicate') ||
+            errorMsg.includes('already subscribed') ||
+            errorMsg.includes('subscriber already exists')) {
+          setStatus('success');
+          setMessage('You\'re already on our list! We\'ll let you know when it\'s ready.');
+          setEmail('');
+        } else if (errorMsg.includes('invalid email') || 
+                   errorMsg.includes('email is not valid') ||
+                   errorMsg.includes('email format')) {
+          setStatus('error');
+          setMessage('Invalid email address. Please check and try again.');
+        } else if (errorMsg.includes('unauthorized') || 
+                   errorMsg.includes('auth') ||
+                   errorMsg.includes('token') ||
+                   errorMsg.includes('forbidden')) {
+          setStatus('error');
+          setMessage('Configuration error. Please contact support.');
+          console.error('API Auth Error:', result);
+        } else {
+          setStatus('error');
+          setMessage(`Subscription failed: ${result.error || result.message}`);
+          console.error('API Error:', result);
+        }
       } else {
-        setStatus('error');
-        setMessage('Unclear response from server. Please try again.');
+        // No clear success or error indicators - log everything for debugging
+        console.warn('Unclear API response:', result);
+        
+        // If response was HTTP 200 but unclear result, assume success
+        if (response.status === 200) {
+          setStatus('success');
+          setMessage('Perfect! We\'ll notify you when the book is available.');
+          setEmail('');
+          
+          if (typeof trackEmailSignup === 'function') {
+            trackEmailSignup(source, 'acumbamail');
+          }
+          
+          if (type === 'modal') {
+            localStorage.setItem('bohemia-email-modal-seen', 'true');
+            setTimeout(() => setShowModal(false), 3000);
+          }
+        } else {
+          setStatus('error');
+          setMessage('Unclear response from server. Please try again.');
+        }
+      }
+
+    } catch (error) {
+      console.error('Full error object:', error);
+      console.error('Error name:', error.name);
+      console.error('Error message:', error.message);
+      console.error('Error stack:', error.stack);
+      
+      setStatus('error');
+      
+      if (error.name === 'TypeError' && error.message.includes('fetch')) {
+        setMessage('Network error. Please check your internet connection.');
+      } else if (error.message.includes('cors') || error.message.includes('CORS')) {
+        setMessage('Access blocked by browser. Please try again.');
+      } else if (error.message.includes('Failed to fetch')) {
+        setMessage('Unable to connect to server. Please try again.');
+      } else {
+        setMessage(`Error: ${error.message}`);
       }
     }
-
-  } catch (error) {
-    console.error('Full error object:', error);
-    console.error('Error name:', error.name);
-    console.error('Error message:', error.message);
-    console.error('Error stack:', error.stack);
-    
-    setStatus('error');
-    
-    if (error.name === 'TypeError' && error.message.includes('fetch')) {
-      setMessage('Network error. Please check your internet connection.');
-    } else if (error.message.includes('cors') || error.message.includes('CORS')) {
-      setMessage('Access blocked by browser. Please try again.');
-    } else if (error.message.includes('Failed to fetch')) {
-      setMessage('Unable to connect to server. Please try again.');
-    } else {
-      setMessage(`Error: ${error.message}`);
-    }
-  }
-};
+  };
 
   const closeModal = () => {
     setShowModal(false);
@@ -352,8 +350,6 @@ const handleSubmit = async (e) => {
   return null;
 };
 
-// Replace the ComingSoonPage component in your EmailCapture.jsx with this fixed version
-
 // Separate Countdown Timer Component
 const CountdownTimer = ({ launchDate }) => {
   const [timeLeft, setTimeLeft] = useState({
@@ -428,7 +424,7 @@ export const ComingSoonPage = () => {
                 Be among the first to transform your Barcelona dream into reality.
               </p>
               
-              {/* Separate Timer Component */}
+              {/* Separate Timer Component - Won't Cause Re-renders */}
               <CountdownTimer launchDate={launchDate} />
               
               {/* Email Capture - Now Won't Re-render */}
