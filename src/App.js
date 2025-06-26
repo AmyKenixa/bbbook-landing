@@ -14,7 +14,7 @@ import CookieConsent from './components/CookieConsent';
 
 function App() {
   // Set this to true to show coming soon page instead of main site
-  const SHOW_COMING_SOON = false; // Change to true for coming soon mode
+  const SHOW_COMING_SOON = true; // Change to true for coming soon mode
 
   return (
     <HelmetProvider>
