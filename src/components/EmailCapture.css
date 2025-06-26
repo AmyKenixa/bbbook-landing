@@ -5,22 +5,56 @@
   max-width: 100%;
 }
 
+/* Input Group - Horizontal Layout with Gap */
 .input-group {
   display: flex;
+  gap: 12px;
   border-radius: 8px;
-  overflow: hidden;
   box-shadow: 0 4px 15px rgba(29, 181, 132, 0.1);
+}
+
+/* Stacked Input Group Layout */
+.stacked-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-radius: 8px;
+}
+
+.stacked-input-group .form-control.stacked-input {
+  width: 100%;
+  padding: 14px 20px;
+  border: 2px solid var(--bohemia-primary, #1DB584);
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+  margin-bottom: 0;
+}
+
+.stacked-input-group .form-control.stacked-input:focus {
+  border-color: var(--bohemia-primary-dark, #159A73);
+  box-shadow: 0 0 0 3px rgba(29, 181, 132, 0.1);
+}
+
+.stacked-input-group .btn.stacked-button {
+  width: 100%;
+  padding: 14px 24px;
+  border-radius: 8px;
+  border: 2px solid var(--bohemia-primary, #1DB584);
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .input-group .form-control {
   flex: 1;
   padding: 14px 20px;
   border: 2px solid var(--bohemia-primary, #1DB584);
-  border-right: none;
-  border-radius: 8px 0 0 8px;
+  border-radius: 8px;
   font-size: 16px;
   outline: none;
   transition: all 0.3s ease;
+  margin-right: 12px;
 }
 
 .input-group .form-control:focus {
@@ -30,13 +64,14 @@
 
 .input-group .btn {
   padding: 14px 24px;
-  border-radius: 0 8px 8px 0;
+  border-radius: 8px;
   border: 2px solid var(--bohemia-primary, #1DB584);
-  border-left: none;
   font-weight: 600;
   white-space: nowrap;
+  transition: all 0.3s ease;
 }
 
+/* Form Messages */
 .form-message {
   margin-top: 12px;
   padding: 10px 15px;
@@ -150,6 +185,15 @@
   justify-content: center;
   padding: 20px;
   animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .email-modal {

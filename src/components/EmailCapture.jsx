@@ -100,19 +100,19 @@ const EmailCapture = ({
   const EmailForm = memo(({ className = '' }) => (
     <form onSubmit={handleSubmit} className={`email-capture-form ${className}`}>
       <div className="form-group">
-        <div className="input-group">
+        <div className="stacked-input-group">
           <input
             type="email"
             defaultValue={emailRef.current}
             onChange={(e) => emailRef.current = e.target.value}
             placeholder="Enter your email address"
-            className="form-control"
+            className="form-control stacked-input"
             disabled={status === 'loading'}
             required
           />
           <button 
             type="submit" 
-            className="btn btn-main"
+            className="btn btn-main stacked-button"
             disabled={status === 'loading'}
           >
             {status === 'loading' ? (
