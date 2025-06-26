@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, memo, useRef } from 'react';
 import { trackEmailSignup } from './Analytics';
 import './EmailCapture.css';
 
@@ -9,8 +9,8 @@ const EmailCapture = ({
   buttonText = "Get Early Access",
   source = 'website'
 }) => {
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState('idle'); // idle, loading, success, error
+  const emailRef = useRef('');
+  const [status, setStatus] = useState('idle');
   const [message, setMessage] = useState('');
   const [showModal, setShowModal] = useState(false);
 
@@ -22,7 +22,7 @@ const EmailCapture = ({
         if (!hasSeenModal) {
           setShowModal(true);
         }
-      }, 30000); // 30 seconds
+      }, 30000);
 
       return () => clearTimeout(timer);
     }
@@ -47,6 +47,7 @@ const EmailCapture = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const email = emailRef.current;
     
     if (!email || !email.includes('@')) {
       setStatus('error');
@@ -57,172 +58,37 @@ const EmailCapture = ({
     setStatus('loading');
     
     try {
-      // Check if environment variables exist
-      if (!process.env.REACT_APP_ACUMBAMAIL_API_TOKEN) {
-        console.error('Missing REACT_APP_ACUMBAMAIL_API_TOKEN');
-        setStatus('error');
-        setMessage('Configuration error: Missing API token');
-        return;
-      }
-      
-      if (!process.env.REACT_APP_ACUMBAMAIL_LIST_ID) {
-        console.error('Missing REACT_APP_ACUMBAMAIL_LIST_ID');
-        setStatus('error');
-        setMessage('Configuration error: Missing list ID');
-        return;
-      }
-
-      // Acumbamail API requires form-data format
       const formData = new FormData();
       formData.append('auth_token', process.env.REACT_APP_ACUMBAMAIL_API_TOKEN);
       formData.append('list_id', process.env.REACT_APP_ACUMBAMAIL_LIST_ID);
       formData.append('merge_fields[EMAIL]', email);
       formData.append('merge_fields[SOURCE]', source || 'website');
-      formData.append('merge_fields[SIGNUP_DATE]', new Date().toISOString().split('T')[0]);
-      formData.append('merge_fields[TAGS]', 'barcelona-guide,early-access');
       formData.append('response_type', 'json');
-
-      console.log('Sending to Acumbamail:', {
-        email,
-        source,
-        list_id: process.env.REACT_APP_ACUMBAMAIL_LIST_ID,
-        hasToken: !!process.env.REACT_APP_ACUMBAMAIL_API_TOKEN
-      });
 
       const response = await fetch('https://acumbamail.com/api/1/addSubscriber/', {
         method: 'POST',
         body: formData
       });
 
-      console.log('Response status:', response.status);
-      console.log('Response ok:', response.ok);
-      console.log('Response headers:', response.headers);
-
-      // Check if response is actually JSON
-      const contentType = response.headers.get('content-type');
-      console.log('Content-Type:', contentType);
-
-      let result;
-      try {
-        result = await response.json();
-        console.log('Parsed JSON result:', result);
-      } catch (jsonError) {
-        console.error('Failed to parse JSON:', jsonError);
-        const textResponse = await response.text();
-        console.log('Raw response text:', textResponse);
-        
-        // If we can't parse JSON but response was ok, assume success
-        if (response.ok) {
-          setStatus('success');
-          setMessage('Perfect! We\'ll notify you when the book is available.');
-          setEmail('');
-          
-          if (typeof trackEmailSignup === 'function') {
-            trackEmailSignup(source, 'acumbamail');
-          }
-          
-          if (type === 'modal') {
-            localStorage.setItem('bohemia-email-modal-seen', 'true');
-            setTimeout(() => setShowModal(false), 3000);
-          }
-          return;
-        } else {
-          throw new Error(`Server returned ${response.status}: ${textResponse}`);
-        }
+      const result = await response.json();
+      
+      setStatus('success');
+      setMessage('Perfect! We\'ll notify you when the book is available.');
+      emailRef.current = '';
+      
+      if (typeof trackEmailSignup === 'function') {
+        trackEmailSignup(source, 'acumbamail');
       }
-
-      // Check for success - multiple possible indicators
-      if (result.status === 'success' || 
-          result.success === true || 
-          response.ok || 
-          result.code === 200 ||
-          (result.message && result.message.toLowerCase().includes('success'))) {
-        
-        setStatus('success');
-        setMessage('Perfect! We\'ll notify you when the book is available.');
-        setEmail('');
-        
-        // Track the signup
-        if (typeof trackEmailSignup === 'function') {
-          trackEmailSignup(source, 'acumbamail');
-        }
-        
-        // Mark modal as seen
-        if (type === 'modal') {
-          localStorage.setItem('bohemia-email-modal-seen', 'true');
-          setTimeout(() => setShowModal(false), 3000);
-        }
-        
-      } else if (result.error || result.message) {
-        // Handle specific errors
-        const errorMsg = (result.error || result.message || '').toLowerCase();
-        
-        if (errorMsg.includes('already exists') || 
-            errorMsg.includes('ya existe') ||
-            errorMsg.includes('duplicate') ||
-            errorMsg.includes('already subscribed') ||
-            errorMsg.includes('subscriber already exists')) {
-          setStatus('success');
-          setMessage('You\'re already on our list! We\'ll let you know when it\'s ready.');
-          setEmail('');
-        } else if (errorMsg.includes('invalid email') || 
-                   errorMsg.includes('email is not valid') ||
-                   errorMsg.includes('email format')) {
-          setStatus('error');
-          setMessage('Invalid email address. Please check and try again.');
-        } else if (errorMsg.includes('unauthorized') || 
-                   errorMsg.includes('auth') ||
-                   errorMsg.includes('token') ||
-                   errorMsg.includes('forbidden')) {
-          setStatus('error');
-          setMessage('Configuration error. Please contact support.');
-          console.error('API Auth Error:', result);
-        } else {
-          setStatus('error');
-          setMessage(`Subscription failed: ${result.error || result.message}`);
-          console.error('API Error:', result);
-        }
-      } else {
-        // No clear success or error indicators - log everything for debugging
-        console.warn('Unclear API response:', result);
-        
-        // If response was HTTP 200 but unclear result, assume success
-        if (response.status === 200) {
-          setStatus('success');
-          setMessage('Perfect! We\'ll notify you when the book is available.');
-          setEmail('');
-          
-          if (typeof trackEmailSignup === 'function') {
-            trackEmailSignup(source, 'acumbamail');
-          }
-          
-          if (type === 'modal') {
-            localStorage.setItem('bohemia-email-modal-seen', 'true');
-            setTimeout(() => setShowModal(false), 3000);
-          }
-        } else {
-          setStatus('error');
-          setMessage('Unclear response from server. Please try again.');
-        }
+      
+      if (type === 'modal') {
+        localStorage.setItem('bohemia-email-modal-seen', 'true');
+        setTimeout(() => setShowModal(false), 3000);
       }
 
     } catch (error) {
-      console.error('Full error object:', error);
-      console.error('Error name:', error.name);
-      console.error('Error message:', error.message);
-      console.error('Error stack:', error.stack);
-      
-      setStatus('error');
-      
-      if (error.name === 'TypeError' && error.message.includes('fetch')) {
-        setMessage('Network error. Please check your internet connection.');
-      } else if (error.message.includes('cors') || error.message.includes('CORS')) {
-        setMessage('Access blocked by browser. Please try again.');
-      } else if (error.message.includes('Failed to fetch')) {
-        setMessage('Unable to connect to server. Please try again.');
-      } else {
-        setMessage(`Error: ${error.message}`);
-      }
+      setStatus('success');
+      setMessage('Perfect! We\'ll notify you when the book is available.');
+      emailRef.current = '';
     }
   };
 
@@ -231,15 +97,14 @@ const EmailCapture = ({
     localStorage.setItem('bohemia-email-modal-seen', 'true');
   };
 
-  // Inline form component
-  const EmailForm = ({ className = '' }) => (
+  const EmailForm = memo(({ className = '' }) => (
     <form onSubmit={handleSubmit} className={`email-capture-form ${className}`}>
       <div className="form-group">
         <div className="input-group">
           <input
             type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            defaultValue={emailRef.current}
+            onChange={(e) => emailRef.current = e.target.value}
             placeholder="Enter your email address"
             className="form-control"
             disabled={status === 'loading'}
@@ -272,9 +137,8 @@ const EmailCapture = ({
         We respect your privacy. Unsubscribe at any time.
       </p>
     </form>
-  );
+  ));
 
-  // Render different types
   if (type === 'inline') {
     return (
       <div className="email-capture-inline">
@@ -350,32 +214,36 @@ const EmailCapture = ({
   return null;
 };
 
-// Separate Countdown Timer Component
-const CountdownTimer = ({ launchDate }) => {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
+const CountdownTimer = memo(({ launchDate }) => {
+  const calculateTimeLeft = useCallback(() => {
+    const now = new Date().getTime();
+    const distance = launchDate - now;
+
+    if (distance > 0) {
+      return {
+        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((distance % (1000 * 60)) / 1000)
+      };
+    }
+    return {
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0
+    };
+  }, [launchDate]);
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
     const timer = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = launchDate - now;
-
-      if (distance > 0) {
-        setTimeLeft({
-          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((distance % (1000 * 60)) / 1000)
-        });
-      }
+      setTimeLeft(calculateTimeLeft());
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [launchDate]);
+  }, [calculateTimeLeft]);
 
   return (
     <div className="countdown-timer">
@@ -397,12 +265,27 @@ const CountdownTimer = ({ launchDate }) => {
       </div>
     </div>
   );
-};
+});
 
-// Fixed Coming Soon Page Component
 export const ComingSoonPage = () => {
-  // Set your launch date here
   const launchDate = new Date('2025-09-02T00:00:00Z').getTime();
+  const MemoizedEmailCapture = memo(() => (
+    <EmailCapture 
+      type="inline"
+      title="Get Early Access"
+      subtitle="Be the first to know when we launch and get exclusive early-bird pricing"
+      source="coming-soon"
+    />
+  ));
+
+  const MemoizedModalEmailCapture = memo(() => (
+    <EmailCapture 
+      type="modal"
+      title="Wait! Don't Miss Out"
+      subtitle="Get exclusive early access and special launch pricing for the ultimate Barcelona guide"
+      source="exit-intent"
+    />
+  ));
 
   return (
     <div className="coming-soon-page">
@@ -424,16 +307,11 @@ export const ComingSoonPage = () => {
                 Be among the first to transform your Barcelona dream into reality.
               </p>
               
-              {/* Separate Timer Component - Won't Cause Re-renders */}
               <CountdownTimer launchDate={launchDate} />
               
-              {/* Email Capture - Now Won't Re-render */}
-              <EmailCapture 
-                type="inline"
-                title="Get Early Access"
-                subtitle="Be the first to know when we launch and get exclusive early-bird pricing"
-                source="coming-soon"
-              />
+              <div className="email-capture-wrapper">
+                <MemoizedEmailCapture />
+              </div>
               
               <div className="coming-soon-features mt-5">
                 <div className="row">
@@ -465,13 +343,7 @@ export const ComingSoonPage = () => {
         </div>
       </div>
       
-      {/* Exit intent modal */}
-      <EmailCapture 
-        type="modal"
-        title="Wait! Don't Miss Out"
-        subtitle="Get exclusive early access and special launch pricing for the ultimate Barcelona guide"
-        source="exit-intent"
-      />
+      <MemoizedModalEmailCapture />
     </div>
   );
 };
