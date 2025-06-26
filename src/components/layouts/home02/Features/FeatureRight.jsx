@@ -7,21 +7,21 @@ class FeatureRight extends Component {
             collRight: [
                 {
                     id: 1,
-                    icon: 'fa fa-check',
-                    title: '10 tips to improve yourself',
-                    text: 'Well-written book is concerned with creating typography and is essential for professionals who regularly'
+                    icon: 'fa fa-comments',
+                    title: 'Master Language & Culture',
+                    text: 'Learn when to speak Catalan vs Spanish, navigate local customs, and integrate authentically into Barcelona\'s vibrant multicultural community.'
                 },
                 {
                     id: 2,
-                    icon: 'fa fa-check',
-                    title: 'Powerful tips & tricks',
-                    text: 'Well-written book is concerned with creating typography and is essential for professionals who regularly'
+                    icon: 'fa fa-users',
+                    title: 'Build Your Professional Network',
+                    text: 'Connect with the startup ecosystem, find co-working spaces, join expat communities, and accelerate your career in Europe\'s innovation hub.'
                 },
                 {
                     id: 3,
-                    icon: 'fa fa-check',
-                    title: 'Grow your personality',
-                    text: 'Well-written book is concerned with creating typography and is essential for professionals who regularly '
+                    icon: 'fa fa-heart',
+                    title: 'Find Your Tribe & Thrive',
+                    text: 'Discover social networks, join local festivals, embrace the Mediterranean lifestyle, and create lasting friendships in your new home.'
                 }
             ]
         }

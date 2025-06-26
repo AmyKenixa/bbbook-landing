@@ -7,21 +7,21 @@ class FeatureLeft extends Component {
             collLeft: [
                 {
                     id: 1,
-                    icon: 'fa fa-check',
-                    title: 'How to improve yourself',
-                    text: 'Well-written book is concerned with creating typography and is essential for professionals who regularly'
+                    icon: 'fa fa-passport',
+                    title: 'Master Visa Applications',
+                    text: 'Navigate Spain\'s complex visa system with confidence. Step-by-step Digital Nomad Visa guidance, work permits, and residency pathways with actual timelines.'
                 },
                 {
                     id: 2,
-                    icon: 'fa fa-check',
-                    title: 'Utilize time productively',
-                    text: 'Well-written book is concerned with creating typography and is essential for professionals who regularly'
+                    icon: 'fa fa-home',
+                    title: 'Conquer the Housing Market',
+                    text: 'Stand out to landlords in Barcelona\'s competitive market. Proven strategies for finding neighborhoods, negotiating rent, and avoiding common pitfalls.'
                 },
                 {
                     id: 3,
-                    icon: 'fa fa-check',
-                    title: 'How to think creatively',
-                    text: 'Well-written book is concerned with creating typography and is essential for professionals who regularly '
+                    icon: 'fa fa-calculator',
+                    title: 'Budget Like a Pro',
+                    text: 'Master the 30% buffer rule and real-world cost breakdowns. Avoid financial stress with insider knowledge of Barcelona\'s true living expenses.'
                 }
             ]
         }

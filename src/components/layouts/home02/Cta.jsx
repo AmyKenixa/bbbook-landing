@@ -8,21 +8,48 @@ class Cta extends Component {
             <div className="container">
                 <div className="row justify-content-center cta-inner">
                     <div className="col-lg-8">
-                        <div className="cta-content">
-                            <span className="subheading2">Subscribe now</span>
-                            <h2 className="heading-title">Get a free chapter of this book</h2>
-                            <form action="#" className="subsribe">
-                                <div className="form-group mb-3">
-                                    <input type="text" className="form-control" placeholder="Email Address"/>
+                        <div className="cta-content text-center">
+                            <span className="subheading2">Ready to Start Your Barcelona Journey?</span>
+                            <h2 className="heading-title">Get Your Complete Relocation Guide Today</h2>
+                            <p className="lead mb-4">Join hundreds of successful expats who used this guide to make Barcelona home. Don't navigate the move alone—get insider knowledge that saves time, money, and stress.</p>
+                            
+                            <div className="pricing-info mb-4">
+                                <div className="price-options justify-content-center">
+                                    <span className="price-label">Print Edition:</span>
+                                    <span className="price-original">$99</span>
+                                    <span className="price-sale">$79</span>
+                                    <span className="price-divider">|</span>
+                                    <span className="price-label">eBook:</span>
+                                    <span className="price-ebook">$49</span>
                                 </div>
-                                <Link to="#" className="btn btn-main w-100">Subscribe<i className="fa fa-angle-right ms-2"></i></Link>  
-                                <p>* eBook includes iBooks, PDF & ePub versions</p>
-                            </form>
+                            </div>
+                            
+                            <div className="footer-buttons d-flex gap-3 justify-content-center flex-wrap mb-4">
+                                <Link to="#" className="btn btn-main">
+                                    <i className="fa fa-book me-2"></i>Get Print Edition - $79
+                                </Link>
+                                <Link to="#" className="btn btn-outline">
+                                    <i className="fa fa-download me-2"></i>Get eBook - $49
+                                </Link>
+                            </div>
+                            
+                            <div className="benefits-list">
+                                <ul className="list-unstyled d-flex flex-wrap justify-content-center gap-4">
+                                    <li><i className="fa fa-check"></i> Instant Download</li>
+                                    <li><i className="fa fa-check"></i> Lifetime Updates</li>
+                                    <li><i className="fa fa-check"></i> Community Access</li>
+                                    <li><i className="fa fa-check"></i> 30-Day Guarantee</li>
+                                </ul>
+                            </div>
+                            
+                            <p className="mt-3 text-muted">
+                                <small>* eBook includes PDF, ePub, and Kindle versions. Print edition ships worldwide.</small>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section> 
+        </section>
         );
     }
 }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
+import './Banner.css';
 
 class Banner extends Component {
     constructor(props){
@@ -9,22 +11,22 @@ class Banner extends Component {
                 {
                     id: 1,
                     icon: 'fa fa-check',
-                    title: 'Learn From Expert in details',
+                    title: 'Step-by-step visa navigation including Digital Nomad Visa',
                 },
                 {
                     id: 2,
                     icon: 'fa fa-check',
-                    title: '16 Chapters included',
+                    title: 'Neighborhood deep-dives from Gràcia to Poblenou',
                 },
                 {
                     id: 3,
                     icon: 'fa fa-check',
-                    title: 'eBook includes iBooks, PDF & ePub versions',
+                    title: 'Interactive workbooks with practical timelines',
                 },
                 {
                     id: 4,
                     icon: 'fa fa-check',
-                    title: 'Audio book with every purchase',
+                    title: 'Exclusive community access + regular updates',
                 },
             ]
         }
@@ -36,13 +38,14 @@ class Banner extends Component {
                     <div className="row align-items-center justify-content-between">
                         <div className="col-lg-6">
                             <div className="banner-img pe-3">
-                                <img src="assets/images/banner/book-2.png" alt="" className="img-fluid"/>
+                                <img src="assets/images/banner/bohemia-barcelona-cover.png" alt="Bohemia Barcelona Book Cover" className="img-fluid"/>
                             </div>
                         </div>
                         <div className="col-md-12 col-lg-6">
-                            <div className="banner-content  mt-4 mt-lg-0">
-                                <span className="subheading">50% discount on early purchase</span>
-                                <h1>Solve your daily life problem in 1 minute</h1>
+                            <div className="banner-content mt-4 mt-lg-0">
+                                <span className="subheading">Transform Your Barcelona Dream into Reality</span>
+                                <h1>Bohemia Barcelona: The Ultimate Guide to Relocating & Living Well in Barcelona</h1>
+                                <p className="lead mb-4">The most complete relocation guide ever written. Bridge the gap between tourist dreams and expat reality with insider knowledge from someone who made the leap nine years ago.</p>
                                 <ul>
                                     {
                                     this.state.listItem.map(data => (
@@ -50,8 +53,24 @@ class Banner extends Component {
                                         ))
                                     }
                                 </ul>
-                                <Link to="#" className="btn btn-main">Get this book at 29$</Link>  
-                                <p>Interested in free chapter? <Link to="#">Get it now</Link></p>
+                                <div className="pricing-info mb-4">
+                                    <div className="price-options">
+                                        <span className="price-label">Print Edition:</span>
+                                        <span className="price-original">$99</span>
+                                        <span className="price-sale">$79</span>
+                                        <span className="price-divider">|</span>
+                                        <span className="price-label">eBook:</span>
+                                        <span className="price-ebook">$49</span>
+                                    </div>
+                                </div>
+                                <div className="banner-buttons">
+                                    <Link to="#" className="btn btn-main me-3">Get Print Edition - $79</Link>
+                                    <Link to="#" className="btn btn-outline">Get eBook - $49</Link>
+                                </div>
+                                <p className="mt-3 mb-1">Written by <strong>Amy Cancryn</strong></p>
+                                <p className="mb-1">9+ years Barcelona resident</p>
+                                <p className="mb-3"><HashLink to="#chapters">Preview chapters free</HashLink></p>
+                                <p className="testimonial-quote mt-3 fst-italic">"Barcelona is a city that encourages reinvention. Here, you can rediscover your passions, explore new horizons, and find your tribe." —Amy Cancryn</p>
                             </div>
                         </div>
                        
@@ -64,4 +83,3 @@ class Banner extends Component {
 }
 
 export default Banner;
-

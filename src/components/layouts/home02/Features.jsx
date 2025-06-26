@@ -7,10 +7,10 @@ class Features extends Component {
         <section className="book-preview section-padding"  id="topics">
             <div className="container">
                 <div className="row justify-content-center">
-                    <div className="col-lg-6">
+                    <div className="col-lg-8">
                         <div className="section-heading center-heading text-center mb-60">
-                            <h3 className="heading-title text-white">Thing's you will learn</h3>
-                            <p className="text-white">This book is concerned with creating typography and is essential for professionals who regularly work for clients.</p>
+                            <h3 className="heading-title text-white">Everything You Need to Thrive in Barcelona</h3>
+                            <p className="text-white">From visa applications to building your social network, this ultimate guide covers every aspect of relocating successfully. No stone left unturned, no detail overlooked.</p>
                         </div>
                     </div>
                 </div>

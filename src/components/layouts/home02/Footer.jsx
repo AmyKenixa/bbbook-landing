@@ -1,40 +1,26 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 class Footer extends Component {
     render() {
         return (          
             <section className="footer pt-120">
                 <div className="container">
-                    <div className="row">
-                        <div className="col-lg-4 me-auto col-sm-6 col-md-12">
-                            <div className="widget footer-widget mb-5 mb-lg-0">
-                                <h5 className="widget-title">BookHunt</h5>
-                                <p className="mt-3">Veniam Sequi molestias aut necessitatibus optio magni at natus accusamus. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate, obcaecat .</p>
-                            </div>
-                        </div>
-                        
-                        <div className="col-lg-6 col-sm-6 col-md-12">
-                            <div className="footer-widget mb-5 mb-lg-0">
-                                <h5 className="widget-title">Information</h5>
-                            </div>
-                            <div className="row">
-                                <div className="col-lg-5 col-md-6">
-                                    <ul className="list-unstyled footer-links">
-                                        <li><Link to="#">SEO Business</Link></li>
-                                        <li><Link to="#">Digital Marketing</Link></li>
-                                        <li><Link to="#">Graphic Design</Link></li>
-                                        <li><Link to="#">Site Development</Link></li>
-                                    </ul>
-                                </div>
-                                <div className="col-lg-6 col-md-6">
-                                    <div className="footer-widget footer-contact mb-5 mb-lg-0">
-                                        <ul className="list-unstyled">
-                                            <li> +1 (305) 547-9909</li>
-                                            <li>382 NE 191st St # 87394 Miami, FL 33179-3899</li>
-                                            <li>info@example.com</li>
-                                        </ul>
-                                    </div>
+                    <div className="row justify-content-center">
+                        <div className="col-lg-8 text-center">
+                            <div className="footer-content">
+                          
+                                <div className="social-links mb-4">
+                                    <Link to="https://bohemiabarcelona.com" target="_blank" rel="noopener noreferrer" className="social-link me-4">
+                                        <i className="fa fa-globe me-2"></i>Bohemia Barcelona
+                                    </Link>
+                                    <Link to="https://instagram.com/bohemiabarcelona" target="_blank" rel="noopener noreferrer" className="social-link me-4">
+                                        <i className="fa fa-instagram me-2"></i>Instagram
+                                    </Link>
+                                    <Link to="mailto:info@bohemiabarcelona.com" className="social-link">
+                                        <i className="fa fa-envelope me-2"></i>Contact Amy
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -44,23 +30,19 @@ class Footer extends Component {
                 <div className="footer-btm">
                     <div className="container">
                         <div className="row">
-                            <div className="col-lg-6">
+                            <div className="col-lg-12 text-center">
                                 <div className="copyright">
-                                    <p>@ 2023-Copyright reserved to BooHunt.Proudly Crafted by <Link to="https://themeforest.net/user/pxelcode">Pxelcode</Link> </p>
+                                    <p>© 2025 Bohemia Barcelona. All rights reserved. Written by Amy Cancryn</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                             
-            
                 <div className="fixed-btm-top">
                     <a href="#top-header" className="js-scroll-trigger scroll-to-top"><i className="fa fa-angle-up"></i></a>
                 </div>
             </section>
-
-
         );
     }
 }

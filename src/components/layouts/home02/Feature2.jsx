@@ -8,21 +8,21 @@ class Feature2 extends Component {
            feature: [
                 {
                     id: 1,
-                    icon: 'bi bi-badge2',
-                    title: 'Entrepreneurs',
-                    text: 'Behind the word mountains, far from the countries'
+                    icon: 'fa fa-laptop',
+                    title: 'Digital Nomads',
+                    text: 'Master the Digital Nomad Visa, discover co-working spaces, and build your remote career while living the Mediterranean dream in Barcelona.'
                 },
                 {
                     id: 2,
-                    icon: 'bi bi-article',
-                    title: 'Project Managers',
-                    text: 'Behind the word mountains, far from the countries'
+                    icon: 'fa fa-briefcase',
+                    title: 'Career Professionals',
+                    text: 'Navigate the Spanish job market, understand work visas, build professional networks, and advance your career in Europe\'s most dynamic startup hub.'
                 },
                 {
                     id: 3,
-                    icon: 'bi bi-headset',
-                    title: 'Students',
-                    text: 'Behind the word mountains, far from the countries'
+                    icon: 'fa fa-home',
+                    title: 'Families & Couples',
+                    text: 'Find the perfect neighborhoods, choose schools for your children, access healthcare, and create a stable, thriving family life in Barcelona.'
                 }
             ]
         }
@@ -33,18 +33,18 @@ class Feature2 extends Component {
             <section className="feature-2 pt-100 bg-grey">
                 <div className="container">
                     <div className="row justify-content-center">
-                        <div className="col-lg-6">
+                        <div className="col-lg-8">
                             <div className="section-heading center-heading text-center mb-60">
-                                <h3 className="heading-title">Who This Book Is For</h3>
-                                <p>This book is concerned with creating typography and is essential for professionals who regularly work for clients.</p>
+                                <h3 className="heading-title">Transform Your Barcelona Dream into Reality</h3>
+                                <p>Whether you're seeking creative inspiration, career growth, or family adventure, this ultimate guide provides the roadmap for every type of Barcelona relocator. Join thousands who've successfully made the leap.</p>
                             </div>
                         </div>
                     </div>
                     <div className="row ">
                         {
                             this.state.feature.map((data) => (
-                                <div className="col-lg-4 col-md-6">
-                                    <div className="feature-style-2 mb-4 mb-lg-0" key={data.id} >
+                                <div className="col-lg-4 col-md-6" key={data.id}>
+                                    <div className="feature-style-2 mb-4 mb-lg-0">
                                         <i className={data.icon}></i>
                                         <div className="feature-text">
                                             <h4>{data.title}</h4>

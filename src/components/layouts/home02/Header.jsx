@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
-
-import links from '../links';
-import menus from '../menus2';
 
 class Header extends Component {
     render() {
@@ -12,43 +8,40 @@ class Header extends Component {
                 <div className="site-navigation main_menu" id="mainmenu-area">
                     <nav className="navbar navbar-expand-lg">
                         <div className="container">
-                            <Link to="/" className="navbar-brand">
-                                <img src="assets/images/logo-dark.png" alt="Bookhunt" className="img-fluid"/>
-                            </Link>
+                            <HashLink to="#top" className="navbar-brand">
+                                <img src="assets/images/logo-small.png" alt="Bohemia Barcelona" className="img-fluid"/>
+                            </HashLink>
                             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="fa fa-bars"></span>
                             </button>
                            
                             <div className="collapse navbar-collapse" id="navbarMenu">
                                 <ul className="navbar-nav me-auto">
-                                    <li className="nav-item dropdown">
-                                        <Link to="#" className="nav-link dropdown-toggle"  
-                                            id="navbar2" role="button" data-toggle="dropdown" aria-haspopup="true" 
-                                            aria-expanded="false">Home <i className="fa fa-angle-down"></i>
-                                        </Link>
-                                        <ul className="dropdown-menu" >
-                                            {
-                                                links.map((data,i) => (
-                                                    
-                                                    <Link key={i} className="dropdown-item" to={data.tolink} onClick={() => {window.location.href=data.tolink}}>
-                                                        {data.namelink}
-                                                    </Link>
-                                                ))
-                                            }
-                                        </ul>
+                                    <li className="nav-item">
+                                        <HashLink to="#about" className="nav-link">About</HashLink>
                                     </li>
-
-                                    {
-                                        menus.map((menu,i) => (
-                                            <li className="nav-item " ><HashLink to={menu.tomenu}  key={i} className="nav-link js-scroll-trigger">{menu.namemenu}</HashLink></li>
-                                        ))
-                                    }  
-                                    
+                                    <li className="nav-item">
+                                        <HashLink to="#chapters" className="nav-link">Contents</HashLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <HashLink to="#topics" className="nav-link">What You'll Learn</HashLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <HashLink to="#testimonial" className="nav-link">Reviews</HashLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <HashLink to="#author" className="nav-link">About Amy</HashLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <HashLink to="#contact" className="nav-link">Contact</HashLink>
+                                    </li>
                                 </ul>
                             </div> 
 
                             <div className="header-right-info d-none d-lg-block">
-                                <Link to="#" className="btn btn-main-tp btn-small"><i className="fa fa-shopping-cart me-2"></i>Get it Now</Link>
+                                <HashLink to="#contact" className="btn btn-main-tp btn-small">
+                                    <i className="fa fa-shopping-cart me-2"></i>Get Your Copy
+                                </HashLink>
                             </div>
                         </div> 
                     </nav>

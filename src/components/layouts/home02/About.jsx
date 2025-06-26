@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 class About extends Component {
     constructor(props){
@@ -8,21 +9,21 @@ class About extends Component {
             about: [
                 {
                     id: 1,
-                    icon: 'bi bi-badge2',
-                    title: '10+ award achieved',
-                    text: 'Debitis ab ipsum a autem sit ducimus voluptatem, quos. Consequatur non eum facilis, ex repellendus, vitae debitis.'
+                    icon: 'fa fa-passport',
+                    title: 'Digital Nomads & Remote Workers',
+                    text: 'Complete Digital Nomad Visa guidance, co-working spaces, and building your remote career while living the Mediterranean dream.'
                 },
                 {
                     id: 2,
-                    icon: 'bi bi-support',
-                    title: 'Read On Any Device',
-                    text: 'Debitis ab ipsum a autem sit ducimus voluptatem, quos. Consequatur non eum facilis, ex repellendus, vitae debitis.'
+                    icon: 'fa fa-home',
+                    title: 'Families & Professionals',
+                    text: 'International school guides, career transitions, healthcare navigation, and creating stability while embracing Barcelona\'s vibrant culture.'
                 },
                 {
                     id: 3,
-                    icon: 'bi bi-rocket2',
-                    title: 'Marketing Goals',
-                    text: 'Debitis ab ipsum a autem sit ducimus voluptatem, quos. Consequatur non eum facilis, ex repellendus, vitae debitis. '
+                    icon: 'fa fa-heart',
+                    title: 'Free Spirits & Adventurers',
+                    text: 'Cultural integration secrets, finding your tribe, embracing local rhythms, and turning your Barcelona dream into sustainable reality.'
                 }
             ]
         }
@@ -34,14 +35,14 @@ class About extends Component {
                 <div className="row">
                     <div className="col-lg-6 col-md-6">
                         <div className="about-img">
-                            <img src="assets/images/banner/book.png" alt="" className="img-fluid"/>
+                            <img src="assets/images/banner/bohemia-barcelona-lifestyle.jpg" alt="Barcelona lifestyle - expats enjoying life in the city" className="img-fluid"/>
                         </div>
                     </div>
                     <div className="col-lg-6 col-md-6">
                         <div className="section-heading">
-                            <span className="subheading">50% discount on early purchase</span>
-                            <h3 className="heading-title">Everything in your hand using mobile or tablet</h3>
-                            <p>This lovely, well-written book is concerned with creating typography and is essential for professionals.</p>
+                            <span className="subheading">What Makes This the Ultimate Relocation Guide</span>
+                            <h3 className="heading-title">Perfect for Every Type of Barcelona Relocator</h3>
+                            <p>Unlike generic travel books, <strong>Bohemia Barcelona</strong> is crafted specifically for those ready to call Barcelona home. This isn't just about where to eat paella—it's about building a sustainable, fulfilling life in one of Europe's most dynamic cities.</p>
                         </div>
 
                         {
@@ -54,7 +55,7 @@ class About extends Component {
                             ))
                         }
                         
-                        <Link to="#" className="btn btn-main-2"><i className="fa fa-check me-2"></i>More About Support</Link> 
+                        <HashLink to="#topics" className="btn btn-main-2"><i className="fa fa-compass me-2"></i>Discover What's Inside</HashLink> 
                     </div>
                 </div>
             </div>

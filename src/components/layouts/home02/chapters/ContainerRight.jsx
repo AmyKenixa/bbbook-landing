@@ -7,21 +7,21 @@ class ContainerRight extends Component {
             collRight: [
                 {
                     id: 1,
-                    subtitle: 'Chapter 7',
-                    title: 'The rise of trend Design',
-                    text: 'Well-written book is concerned with creating typography and is essential for professionals who regularly'
+                    subtitle: 'Part 5',
+                    title: 'Practical Tips & Resources',
+                    text: 'Essential safety information, emergency contacts, must-have apps, useful websites, and ongoing support resources for thriving in Barcelona.'
                 },
                 {
                     id: 2,
-                    subtitle: 'Chapter 8',
-                    title: 'Data Science Process',
-                    text: 'Well-written book is concerned with creating typography and is essential for professionals who regularly'
+                    subtitle: 'Bonus',
+                    title: 'Interactive Workbooks',
+                    text: '15 practical worksheets for visa planning, budgeting, neighborhood selection, and action plans to keep you organized and on track.'
                 },
                 {
                     id: 3,
-                    subtitle: 'Chapter 9',
-                    title: 'The rise of trend Design',
-                    text: 'Well-written book is concerned with creating typography and is essential for professionals who regularly '
+                    subtitle: 'Bonus',
+                    title: 'Community Access',
+                    text: 'Exclusive access to our Barcelona expat community, regular updates, and ongoing support from Amy and fellow relocators.'
                 }
             ]
         }
