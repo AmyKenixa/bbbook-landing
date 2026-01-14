@@ -18,7 +18,7 @@ class Footer extends Component {
                                     <Link to="https://instagram.com/bohemiabarcelona" target="_blank" rel="noopener noreferrer" className="social-link me-4">
                                         <i className="fa fa-instagram me-2"></i>Instagram
                                     </Link>
-                                    <Link to="mailto:info@bohemiabarcelona.com" className="social-link">
+                                    <Link to="mailto:hello@bohemiabarcelona.com" className="social-link">
                                         <i className="fa fa-envelope me-2"></i>Contact Amy
                                     </Link>
                                 </div>

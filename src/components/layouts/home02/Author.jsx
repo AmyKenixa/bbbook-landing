@@ -32,7 +32,7 @@ class Author extends Component {
                         <div className="col-lg-8">
                             <div className="section-heading center-heading text-center mb-60">
                                 <h3 className="heading-title">About Amy Cancryn</h3>
-                                <p>Written by someone who's walked this exact path—from overwhelmed newcomer to thriving Barcelona resident and community leader.</p>
+                                <p>Written by someone who's walked this exact path—from overwhelmed newcomer to thriving Barcelona resident.</p>
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@ class Author extends Component {
                         <div className="col-lg-5 col-md-6 ps-4">
                             <div className="section-heading mb-0">
                                 <h3 className="heading-title">Amy Cancryn</h3>
-                                <p className="lead">Barcelona Expat Expert & Community Builder</p>
+                                <p className="lead">Author</p>
                                 <p>Amy immigrated from the United States with her husband and two young children armed with only school-level Spanish and zero knowledge of Catalan. Through trial, error, and determination, she successfully navigated every challenge covered in this guide.</p>
                                 <p>Today, her children are fully integrated into local society—attending public schools, participating in festivals and colonias, and enriching their lives through travel. Her daughter is now studying at university in Barcelona while her son excels in ESO, proving that successful family integration is absolutely possible.</p>
                             </div>

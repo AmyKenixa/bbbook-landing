@@ -29,39 +29,48 @@ class About extends Component {
         }
     }
     render() {
-        return (
-        <section className="about-section section-padding bg-grey" id="about">
-            <div className="container">
-                <div className="row">
-                    <div className="col-lg-6 col-md-6">
-                        <div className="about-img">
-                            <img src="assets/images/banner/bohemia-barcelona-lifestyle.jpg" alt="Barcelona lifestyle - expats enjoying life in the city" className="img-fluid"/>
-                        </div>
+    return (
+    <section className="about-section section-padding bg-grey" id="about">
+        <div className="container">
+            <div className="row">
+                {/* Full width image */}
+                <div className="col-12">
+                    <div className="about-img mb-5">
+                        <img src="assets/images/banner/bonus.jpg" alt="Barcelona lifestyle - expats enjoying life in the city" className="img-fluid w-100"/>
                     </div>
-                    <div className="col-lg-6 col-md-6">
-                        <div className="section-heading">
-                            <span className="subheading">What Makes This the Ultimate Relocation Guide</span>
-                            <h3 className="heading-title">Perfect for Every Type of Barcelona Relocator</h3>
-                            <p>Unlike generic travel books, <strong>Bohemia Barcelona</strong> is crafted specifically for those ready to call Barcelona home. This isn't just about where to eat paella—it's about building a sustainable, fulfilling life in one of Europe's most dynamic cities.</p>
-                        </div>
+                </div>
+                
+                {/* Content underneath */}
+                <div className="col-12">
+                    <div className="section-heading text-center">
+                        <span className="subheading">What Makes This the Ultimate Relocation Guide</span>
+                        <h3 className="heading-title">Perfect for Every Type of Barcelona Relocator</h3>
+                        <p>Unlike generic travel books, <strong>Bohemia Barcelona</strong> is crafted specifically for those ready to call Barcelona home. This isn't just about where to eat paella—it's about building a sustainable, fulfilling life in one of Europe's most dynamic cities.</p>
+                    </div>
 
+                    {/* About blocks - centered layout */}
+                    <div className="row justify-content-center">
                         {
                             this.state.about.map((data,i) => (
-                                <div className="about-text-block" key={i}>
-                                    <i className={data.icon}></i>
-                                    <h4>{data.title}</h4>
-                                    <p>{data.text} </p>
+                                <div className="col-lg-4 col-md-6 mb-4" key={i}>
+                                    <div className="about-text-block text-center">
+                                        <i className={data.icon}></i>
+                                        <h4>{data.title}</h4>
+                                        <p>{data.text} </p>
+                                    </div>
                                 </div>
                             ))
                         }
-                        
-                        <HashLink to="#topics" className="btn btn-main-2"><i className="fa fa-compass me-2"></i>Discover What's Inside</HashLink> 
+                    </div>
+                    
+                    <div className="text-center mt-4">
+                        <HashLink to="#topics" className="btn btn-main-2"><i className="fa fa-compass me-2"></i>Discover What's Inside</HashLink>
                     </div>
                 </div>
             </div>
-        </section>  
-        );
-    }
-}
+        </div>
+    </section>  
+    );
+}}
 
 export default About;

@@ -8,20 +8,20 @@ class FeatureLeft extends Component {
                 {
                     id: 1,
                     icon: 'fa fa-passport',
-                    title: 'Master Visa Applications',
-                    text: 'Navigate Spain\'s complex visa system with confidence. Step-by-step Digital Nomad Visa guidance, work permits, and residency pathways with actual timelines.'
+                    title: 'Understand Visa Applications',
+                    text: 'Navigate Spain\'s complex visa system with confidence. Step-by-step Visa guidance, work permits, and residency pathways with actual timelines.'
                 },
                 {
                     id: 2,
                     icon: 'fa fa-home',
-                    title: 'Conquer the Housing Market',
-                    text: 'Stand out to landlords in Barcelona\'s competitive market. Proven strategies for finding neighborhoods, negotiating rent, and avoiding common pitfalls.'
+                    title: 'Navigate The Housing Market',
+                    text: 'Stand out to landlords in Barcelona\'s competitive market. Proven strategies for finding neighborhoods, and avoiding common pitfalls.'
                 },
                 {
                     id: 3,
                     icon: 'fa fa-calculator',
                     title: 'Budget Like a Pro',
-                    text: 'Master the 30% buffer rule and real-world cost breakdowns. Avoid financial stress with insider knowledge of Barcelona\'s true living expenses.'
+                    text: 'Learn the 30% buffer rule and real-world cost breakdowns. Avoid financial stress with insider knowledge of Barcelona\'s true living expenses.'
                 }
             ]
         }

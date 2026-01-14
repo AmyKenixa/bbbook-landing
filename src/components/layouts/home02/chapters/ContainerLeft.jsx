@@ -9,7 +9,7 @@ class ContainerLeft extends Component {
                     id: 1,
                     subtitle: 'Part 1',
                     title: 'Preparing for the Move',
-                    text: 'Master visa applications, understand costs, find housing, and explore neighborhoods. Includes Digital Nomad Visa guide and the 30% budget buffer rule.'
+                    text: 'Learn about Visa options, understand costs, find housing, and explore neighborhoods.'
                 },
                 {
                     id: 2,

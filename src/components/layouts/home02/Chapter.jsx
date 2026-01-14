@@ -11,7 +11,7 @@ class Chapter extends Component {
                     <div className="col-lg-8">
                         <div className="center-heading mb-60">
                             <h3 className="heading-title">What's Inside Your Ultimate Relocation Guide</h3>
-                            <p>Five comprehensive parts covering every aspect of relocating to Barcelona—from initial planning to thriving in your new life. Each section includes practical workbooks, real-world timelines, and insider tips you won't find anywhere else.</p>
+                            <p>Five comprehensive parts covering every aspect of relocating to Barcelona. From initial planning to thriving in your new life. Each section includes practical workbooks, real-world timelines, and insider tips you won't find anywhere else.</p>
                         </div>
                     </div>
                 </div>

@@ -88,8 +88,8 @@ class Review extends Component {
                 <div className="row justify-content-center">
                     <div className="col-xl-8 col-lg-10">
                         <div className="section-heading center-heading text-center mb-60">
-                            <h3 className="heading-title">Join Thousands Who've Successfully Relocated</h3>
-                            <p>Real stories from digital nomads, families, professionals, and entrepreneurs who transformed their Barcelona dreams into reality with this ultimate guide.</p>
+                            <h3 className="heading-title">Join Exats Who've Successfully Relocated</h3>
+                            <p>Real stories from digital nomads, families, professionals, and entrepreneurs who transformed their Barcelona dreams into reality.</p>
                         </div>
                     </div>
                 </div>

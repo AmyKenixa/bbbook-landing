@@ -8,7 +8,7 @@ class FeatureRight extends Component {
                 {
                     id: 1,
                     icon: 'fa fa-comments',
-                    title: 'Master Language & Culture',
+                    title: 'Language & Culture',
                     text: 'Learn when to speak Catalan vs Spanish, navigate local customs, and integrate authentically into Barcelona\'s vibrant multicultural community.'
                 },
                 {

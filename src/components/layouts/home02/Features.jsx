@@ -10,7 +10,7 @@ class Features extends Component {
                     <div className="col-lg-8">
                         <div className="section-heading center-heading text-center mb-60">
                             <h3 className="heading-title text-white">Everything You Need to Thrive in Barcelona</h3>
-                            <p className="text-white">From visa applications to building your social network, this ultimate guide covers every aspect of relocating successfully. No stone left unturned, no detail overlooked.</p>
+                            <p className="text-white">This ultimate guide covers every aspect of relocating successfully. No stone left unturned, no detail overlooked.</p>
                         </div>
                     </div>
                 </div>

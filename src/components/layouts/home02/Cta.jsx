@@ -11,25 +11,25 @@ class Cta extends Component {
                         <div className="cta-content text-center">
                             <span className="subheading2">Ready to Start Your Barcelona Journey?</span>
                             <h2 className="heading-title">Get Your Complete Relocation Guide Today</h2>
-                            <p className="lead mb-4">Join hundreds of successful expats who used this guide to make Barcelona home. Don't navigate the move alone—get insider knowledge that saves time, money, and stress.</p>
+                            <p className="lead mb-4">Join successful expats who used this guide to make Barcelona home. Don't navigate the move alone. Get insider knowledge that saves time, money, and stress.</p>
                             
                             <div className="pricing-info mb-4">
                                 <div className="price-options justify-content-center">
                                     <span className="price-label">Print Edition:</span>
-                                    <span className="price-original">$99</span>
-                                    <span className="price-sale">$79</span>
+                                    <span className="price-original">$55</span>
+                                    <span className="price-sale">$39,99</span>
                                     <span className="price-divider">|</span>
                                     <span className="price-label">eBook:</span>
-                                    <span className="price-ebook">$49</span>
+                                    <span className="price-ebook">$12,99</span>
                                 </div>
                             </div>
                             
                             <div className="footer-buttons d-flex gap-3 justify-content-center flex-wrap mb-4">
                                 <Link to="#" className="btn btn-main">
-                                    <i className="fa fa-book me-2"></i>Get Print Edition - $79
+                                    <i className="fa fa-book me-2"></i>Get Print Edition - $39,99
                                 </Link>
                                 <Link to="#" className="btn btn-outline">
-                                    <i className="fa fa-download me-2"></i>Get eBook - $49
+                                    <i className="fa fa-download me-2"></i>Get eBook - $12,99
                                 </Link>
                             </div>
                             
@@ -43,7 +43,7 @@ class Cta extends Component {
                             </div>
                             
                             <p className="mt-3 text-muted">
-                                <small>* eBook includes PDF, ePub, and Kindle versions. Print edition ships worldwide.</small>
+                                <small>* eBook includes PDF, and ePub versions. Print edition ships worldwide.</small>
                             </p>
                         </div>
                     </div>

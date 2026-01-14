@@ -15,13 +15,7 @@ class ContainerRight extends Component {
                     id: 2,
                     subtitle: 'Bonus',
                     title: 'Interactive Workbooks',
-                    text: '15 practical worksheets for visa planning, budgeting, neighborhood selection, and action plans to keep you organized and on track.'
-                },
-                {
-                    id: 3,
-                    subtitle: 'Bonus',
-                    title: 'Community Access',
-                    text: 'Exclusive access to our Barcelona expat community, regular updates, and ongoing support from Amy and fellow relocators.'
+                    text: 'Worksheets for visa planning, budgeting, neighborhood selection, and action plans to keep you organized and on track.'
                 }
             ]
         }

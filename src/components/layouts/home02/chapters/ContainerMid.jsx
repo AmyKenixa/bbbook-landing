@@ -10,13 +10,13 @@ class ContainerMid extends Component {
                     id: 1,
                     subtitle: 'Part 3',
                     title: 'Working in Barcelona',
-                    text: 'Navigate the job market, master freelancing as autónomo, explore startup opportunities, and understand the Digital Nomad Visa for remote workers.'
+                    text: 'Navigate the job market, freelancing as autónomo, explore startup opportunities, and understand the Digital Nomad Visa for remote workers.'
                 },
                 {
                     id: 2,
                     subtitle: 'Part 4',
                     title: 'Daily Life & Culture',
-                    text: 'Master Catalan vs Spanish, navigate transportation, discover food culture, build your social network, and integrate into Barcelona\'s vibrant lifestyle.'
+                    text: 'Navigate Catalan & Spanish, navigate transportation, discover food culture, build your social network, and integrate into Barcelona\'s vibrant lifestyle.'
                 }
             ]
         }

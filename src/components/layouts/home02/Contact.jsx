@@ -31,7 +31,7 @@ class Contact extends Component {
                                         <i className="fa fa-users fa-2x text-primary mb-3"></i>
                                         <h5>Community</h5>
                                         <p>Join our Barcelona expat community</p>
-                                        <Link to="https://bohemiabarcelona.com/community" className="btn btn-outline btn-sm" target="_blank">Join Community</Link>
+                                        <Link to="https://bohemiabarcelona.com/" className="btn btn-outline btn-sm" target="_blank">Join Community</Link>
                                     </div>
                                 </div>
                                 <div className="col-md-4 mb-4">

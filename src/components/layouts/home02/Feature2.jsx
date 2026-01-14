@@ -10,7 +10,7 @@ class Feature2 extends Component {
                     id: 1,
                     icon: 'fa fa-laptop',
                     title: 'Digital Nomads',
-                    text: 'Master the Digital Nomad Visa, discover co-working spaces, and build your remote career while living the Mediterranean dream in Barcelona.'
+                    text: 'Learn about the Digital Nomad Visa, discover co-working spaces, and build your remote career while living the Mediterranean dream in Barcelona.'
                 },
                 {
                     id: 2,
@@ -36,7 +36,7 @@ class Feature2 extends Component {
                         <div className="col-lg-8">
                             <div className="section-heading center-heading text-center mb-60">
                                 <h3 className="heading-title">Transform Your Barcelona Dream into Reality</h3>
-                                <p>Whether you're seeking creative inspiration, career growth, or family adventure, this ultimate guide provides the roadmap for every type of Barcelona relocator. Join thousands who've successfully made the leap.</p>
+                                <p>This ultimate guide provides the roadmap for every type of Barcelona relocator. Join Expats who've successfully made the leap.</p>
                             </div>
                         </div>
                     </div>
