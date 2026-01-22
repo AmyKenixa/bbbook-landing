@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class Cta extends Component {
     render() {
         return (
-        <section className="section-cta">
+        <section className="section-cta" id="cta">
             <div className="container">
                 <div className="row justify-content-center cta-inner">
                     <div className="col-lg-8">
