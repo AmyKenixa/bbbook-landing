@@ -60,12 +60,12 @@ class Banner extends Component {
                                         <span className="price-sale">$39,99</span>
                                         <span className="price-divider">|</span>
                                         <span className="price-label">eBook:</span>
-                                        <span className="price-ebook">$12,99</span>
+                                        <span className="price-ebook">$19,99</span>
                                     </div>
                                 </div>
                                 <div className="banner-buttons">
-                                    <Link to="#" className="btn btn-main me-3">Get Print Edition - $39.99</Link>
-                                    <Link to="#" className="btn btn-outline">Get eBook - $12,99</Link>
+                                    <Link to="https://amzn.to/3Nnwh5v" className="btn btn-main me-3">Get Print Edition - $39.99</Link>
+                                    <Link to="https://amzn.to/3YJr7Dq" className="btn btn-outline">Get eBook - $19,99</Link>
                                 </div>
                                 <p className="mt-3 mb-1">Written by <strong>Amy Cancryn</strong></p>
                                 <p className="mb-1">9+ years in Barcelona</p>

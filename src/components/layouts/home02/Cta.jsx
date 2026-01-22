@@ -20,16 +20,16 @@ class Cta extends Component {
                                     <span className="price-sale">$39,99</span>
                                     <span className="price-divider">|</span>
                                     <span className="price-label">eBook:</span>
-                                    <span className="price-ebook">$12,99</span>
+                                    <span className="price-ebook">$19,99</span>
                                 </div>
                             </div>
                             
                             <div className="footer-buttons d-flex gap-3 justify-content-center flex-wrap mb-4">
-                                <Link to="#" className="btn btn-main">
+                                <Link to="https://amzn.to/3Nnwh5v" className="btn btn-main">
                                     <i className="fa fa-book me-2"></i>Get Print Edition - $39,99
                                 </Link>
-                                <Link to="#" className="btn btn-outline">
-                                    <i className="fa fa-download me-2"></i>Get eBook - $12,99
+                                <Link to="https://amzn.to/3YJr7Dq" className="btn btn-outline">
+                                    <i className="fa fa-download me-2"></i>Get eBook - $19,99
                                 </Link>
                             </div>
                             

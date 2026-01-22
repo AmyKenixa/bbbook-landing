@@ -39,7 +39,7 @@ class Header extends Component {
                             </div> 
 
                             <div className="header-right-info d-none d-lg-block">
-                                <HashLink to="#contact" className="btn btn-main-tp btn-small">
+                                <HashLink to="#banner" className="btn btn-main-tp btn-small">
                                     <i className="fa fa-shopping-cart me-2"></i>Get Your Copy
                                 </HashLink>
                             </div>
