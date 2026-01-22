@@ -19,8 +19,9 @@ class Footer extends Component {
                                         <i className="fa fa-instagram me-2"></i>Instagram
                                     </Link>
                                     <Link to="mailto:hola@bohemiabarcelona.com" className="social-link">
-                                        <i className="fa fa-envelope me-2"></i>Contact Amy
+                                        <i className="fa fa-envelope me-2"></i>Contact Amy 
                                     </Link>
+
                                 </div>
                             </div>
                         </div>
@@ -34,6 +35,12 @@ class Footer extends Component {
                                 <div className="copyright">
                                     <p>© 2026 Bohemia Barcelona. All rights reserved. Written by Amy Cancryn</p>
                                 </div>
+                                <Link to="https://bohemiabarcelona.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="social-link me-4">
+                                        <i className=""></i>Privacy Policy
+                                    </Link>
+                                    <Link to="https://bohemiabarcelona.com/terms-and-condition" target="_blank" rel="noopener noreferrer" className="social-link me-4">
+                                        <i className="fa fa-globe me-2"></i>Terms and Conditions
+                                    </Link>
                             </div>
                         </div>
                     </div>
